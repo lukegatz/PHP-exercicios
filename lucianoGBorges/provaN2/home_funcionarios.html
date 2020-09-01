@@ -1,0 +1,97 @@
+<html>
+<head>
+	<title>Sistema de cadastro de veículos</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/estilos.css">
+</head>
+<!-- No carregamento, chamei o script de ordenação da lista de montadoras -->
+<body onload="sortlist()">
+	<h2 align="center" font="Verdana, Arial">CADASTRO DE FUNCIONÁRIOS &ndash; ADSVA4 &ndash; LUCIANO GAUBATZ BORGES</h2>
+	<fieldset id="dados_funcionario">
+		<legend>DADOS DO FUNCIONÁRIO</legend>
+		<form name="cadastro" method="post">
+			<div class="content">
+				<br>
+				<!-- label NOME -->
+				<label for="numero_registro">
+					<strong>Nº DO REGISTRO<br/></strong>
+				</label>
+				<!-- NÃO ACEITA DADOS: é readonly -->
+				<input type="number" name="numero_registro" id="reg" maxlength="11" readonly><br/><br/>
+				<!-- label NOME -->
+				<div class="blc">
+					<label for="nome_func">
+						<strong>Nome do funcionário<br/></strong>
+					</label>
+					<input type="text" name="nome_func" id="func" maxlength="60"><br/></br>
+				</div>
+				<div class="blc">
+					<!-- label DATA -->
+					<label for="data_admissao">
+						<strong>Data de admissão<br/></strong>
+					</label>
+					<input type="date" name="data_admissao" id="adm" maxlength="30"><br/></br>
+				</div>
+			</div>
+			<div class="content">
+				<div class="blc">
+					<!-- label CARGO -->
+					<label for="cargo">
+						<strong>Cargo<br/></strong>
+					</label>
+					<select name="cargo" id="lista_cargos">
+						<option value="" selected></option>
+						<option value="analista de sistemas">Analista de Sistemas</option>
+		  				<option value="desenvolvedor java">Desenvolvedor Java</option>
+						<option value="desenvolvedor PHP">Desenvolvedor PHP</option>
+						<option value="auxiliar de limpeza">Auxiliar de limpeza</option>
+						<option value="auxiliar de rede">Auxiliar de rede</option>
+						<option value="madrilador">Madrilador</option>
+						<option value="mirmecologista">Mirmecologista</option>
+						<option value="trigueiro">Trigueiro</option>
+						<option value="auxiliar de infraestrutura">Auxiliar de infraestrutura</option>
+						<option value="analista de rede">Analista de rede</option>
+						<option value="soldador">Soldador</option>
+						<option value="Geologo">Geólogo</option>
+						<option value="analista de suporte">Analista de suporte</option>
+					</select>
+				</div>
+				<br/><br/>
+				<div class="blc">
+					<!-- label QTDE -->
+					<label for="qtde_salarios">
+						<strong>QTDE sal. mínimos</strong>
+					</label>
+					<input type="number" name="qtde_salarios" id="qte" min="1" step="0.1"><br/></br>
+				</div>
+			</div>
+	</fieldset>
+			<br/>
+			<div align="center">
+					<!-- botões -->
+					<input type="submit" name="btn_cadastrar" value="Cadastrar" onClick="document.cadastro.action='calcular_inss.php'; document.cadastro.action='gravar.php'">
+					<input type="submit" name="btn_listar" value="Listar funcionários" onClick="document.cadastro.action='listagem.php'">
+			</div>
+		</form>
+	
+
+	<!-- script de ordenação do select -->
+	<script language="JavaScript" type="text/javascript">
+		function sortlist() {
+			var ord = document.getElementById('lista_cargos');
+			arrTexts = new Array();
+
+			for(i=0; i<ord.length; i++)  {
+				arrTexts[i] = ord.options[i].text;
+			}
+
+			arrTexts.sort();
+
+			for(i=0; i<ord.length; i++)  {
+				ord.options[i].text = arrTexts[i];
+				ord.options[i].value = arrTexts[i];
+			}
+		}
+</script>
+</body>
+</html>

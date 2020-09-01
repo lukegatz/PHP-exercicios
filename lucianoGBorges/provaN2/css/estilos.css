@@ -1,0 +1,48 @@
+form .content {
+	width: 100%;
+}
+
+form .content .blc {
+	position: relative;
+	float: left;
+	width: 33.33%;
+	padding-right: 30px;
+}
+
+.botoeira {
+	position: relative;
+	/* clear: both; */
+}
+
+label {
+	display: block;
+}
+
+input[type="text"] {
+	display: block;
+}
+input[type="date"] {
+	display: block;
+}
+input[type="number"] {
+	display: block;
+}
+input[type="submit"] {
+	display: inline-block;
+}
+select {
+	display: block;
+	width: 420px;
+}
+
+#func {
+	width: 420px;
+}
+
+#adm {
+	width: 200px;	
+}
+
+#qte {
+	width: 200px;	
+}

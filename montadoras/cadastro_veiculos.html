@@ -1,0 +1,75 @@
+<html>
+<head>
+	<title>Sistema de cadastro de veículos</title>
+	<meta charset="utf-8">
+</head>
+<!-- No carregamento, chamei o script de ordenação da lista de montadoras -->
+<body onload="sortlist()">
+	<h2 align="center" font="Verdana, Arial">MULTIMARCAS VEÍCULOS &ndash; ADSVA4 &ndash; LUCIANO GAUBATZ BORGES</h2>
+	<fieldset id="field_veiculos">
+		<form name="cadastro" method="post">
+			<!-- regra adotada: RENAVAM começa em 1000 -->
+			<strong>Renavam: <br/></strong>
+			<input type="number" name="entrada_renavam" maxlength="11" min="1000" step="1"><br/><br/>
+			<strong>Descrição do veículo: <br/></strong>
+			<input type="text" name="entrada_descricao" maxlength="30"><br/></br>
+			<strong>Montadora: <br/></strong>
+			<select name="entrada_montadora" id="lista_carros">
+				<option value="" selected></option>
+				<option value="Ford">Ford</option>
+  				<option value="Volkswagen">Volkswagen</option>
+				<option value="Chevrolet">Chevrolet</option>
+				<option value="Audi">Audi</option>
+				<option value="Fiat">Fiat</option>
+				<option value="Mercedes">Mercedes</option>
+				<option value="Ferrari">Ferrari</option>
+				<option value="Renault">Renault</option>
+				<option value="Nissan">Nissan</option>
+				<option value="Hyundai">Hyundai</option>
+				<option value="Honda">Honda</option>
+				<option value="Toyota">Toyota</option>
+				<option value="Mazda">Mazda</option>
+				<option value="Subaru">Subaru</option>
+				<option value="BMW">BMW</option>
+				<option value="Lotus">Lotus</option>
+				<option value="Porsche">Porsche</option>
+				<option value="Peugeot">Peugeot</option>
+				<option value="Kia">Kia</option>
+				<option value="Suzuki">Suzuki</option>
+				<option value="Land Rover">Land Rover</option>
+				<option value="Mitsubishi">Mitsubishi</option>
+			</select>
+			<br/><br/>
+			<strong>Ano de fabricação: <br/></strong>
+			<input type="number" name="entrada_ano" maxlength="4" min="1908" max="2021" step="1"><br/></br>
+			<strong>Placa: <br/></strong>
+			<input type="text" name="entrada_placa" pattern="([A-Za-z]{3})+-([0-9]{4})" title="Placa no formato 'XXX-9999'"><br/><br/>
+			<strong>Valor do veículo: <br/></strong>
+			<input type="number" name="entrada_valor" min="1000" step="0.01"><br/></br>
+			<br/><br/>
+			<!-- botões -->
+			<input type="submit" name="btn_cadastrar" value="Cadastrar veículos" onClick="document.cadastro.action='calcular_ipva.php'; document.cadastro.action='gravar.php'">
+			<input type="submit" name="btn_listar" value="Listar veículos" onClick="document.cadastro.action='listagem.php'">
+		</form>
+	</fieldset>
+
+	<!-- script de ordenação do select -->
+	<script language="JavaScript" type="text/javascript">
+		function sortlist() {
+			var ord = document.getElementById('lista_carros');
+			arrTexts = new Array();
+
+			for(i=0; i<ord.length; i++)  {
+				arrTexts[i] = ord.options[i].text;
+			}
+
+			arrTexts.sort();
+
+			for(i=0; i<ord.length; i++)  {
+				ord.options[i].text = arrTexts[i];
+				ord.options[i].value = arrTexts[i];
+			}
+		}
+</script>
+</body>
+</html>
